@@ -13,5 +13,6 @@ public class HelpHandler implements HttpRequestHandler {
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("HelpHandler.handleRequest");
+
     }
 }
