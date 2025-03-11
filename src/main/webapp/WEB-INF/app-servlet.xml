@@ -6,6 +6,11 @@
 
     <context:component-scan base-package="org.innovibe.spring.controller"/>
 
+    <!--Handler Mapping-->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" id="handlerMapping"/>
+    <!--Handler viewMapping-->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" id="viewResolver"/>
+
+    <bean class="org.innovibe.spring.view.IndexView" id="indexView" />
 
 </beans>
