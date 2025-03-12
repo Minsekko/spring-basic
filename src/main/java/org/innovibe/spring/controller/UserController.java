@@ -18,7 +18,9 @@ public class UserController {
     }
 
     @RequestMapping("/join/proceed")
-    public void joinProceedHandle() {
+    public String joinProceedHandle() {
         System.out.println("UserController.joinProceedHandle");
+
+        return "redirect:/index";  //Send redirect 효과
     }
 }
