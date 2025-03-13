@@ -3,7 +3,7 @@ package org.innovibe.spring.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.innovibe.spring.model.TravelSchecule;
+import org.innovibe.spring.model.TravelSchedule;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,7 +74,7 @@ public class StudyController {
         ModelAttribute 로 받을때 할수 있는 아주 효율적인 기능이 하나 더 있다.
      */
     @RequestMapping("/six")
-    public void studySixHandle(@ModelAttribute TravelSchecule schecdule) {
+    public void studySixHandle(@ModelAttribute TravelSchedule schecdule) {
         System.out.println("studyController.studySixHandel()");
         System.out.println(schecdule.toString() );
     }
