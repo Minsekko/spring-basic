@@ -1,27 +1,31 @@
 package org.innovibe.spring.controller;
 
-import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 import org.innovibe.spring.model.TableBooking;
+import org.innovibe.spring.repository.BookingRepository;
+import org.innovibe.spring.repository.MovieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
+
+    @Autowired
+    private TableBooking tableBooking;
+
     @RequestMapping("/form")
     public String bookingFormHandle() {
         return "/booking/form";
     }
 
     @RequestMapping("/proceed")
-    public String bookingProceedHandle(@ModelAttribute @Valid TableBooking booking, BindingResult result,
+    public String createProceedHandle(@ModelAttribute TableBooking tableBooking) {
+        //
+        return "booking/proceed";
+    }
+/*    public String bookingProceedHandle(@ModelAttribute @Valid TableBooking booking, BindingResult result,
                                        Model model, HttpSession httpSession) {
         System.out.println("booking proceed handle");
         System.out.println("booking: " + booking);
@@ -44,5 +48,6 @@ public class BookingController {
 
             return "/booking/proceed-error";
         }
-    }
+    }*/
+
 }
