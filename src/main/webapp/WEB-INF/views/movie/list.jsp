@@ -33,22 +33,14 @@
 </head>
 <body>
 <div style="text-align: center">
-<h3> 영화 데이터베이스</h3>
-    <table style="width: 680px; margin: auto;">
-        <tr>
-            <th>영화명</th>
-            <th>개봉일</th>
-        </tr>
-        <c:forEach items="${movies}" var="one">
-            <tr>
-                <td>
-                    <a href="${pageContext.request.contextPath}/movie/detail?id=${one.id}">${one.title}</a>
-                </td>
-                <td>${one.releaseDate}</td>
-            </tr>
-        </c:forEach>
-
-    </table>
+<h3> 영화 리스트</h3>
+<ul>
+    <c:forEach var="one" items="${movies}">
+        <li>
+            ${one.id} | ${one.title} | ${one.genre} | ${one.releaseDate}
+        </li>
+    </c:forEach>
+</ul>
 </div>
 </body>
 </html>

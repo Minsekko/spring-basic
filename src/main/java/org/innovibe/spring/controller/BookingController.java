@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BookingController {
 
     @Autowired
-    private TableBooking tableBooking;
+    private BookingRepository bookingRepository;
 
     @RequestMapping("/form")
     public String bookingFormHandle() {

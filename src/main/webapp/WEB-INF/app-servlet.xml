@@ -33,8 +33,23 @@
         <property name="password" value="1q2w3e4r"/>
     </bean>
 
+    <bean class="org.apache.ibatis.session.Configuration" id="mybatisConfiguration">
+        <property name="mapUnderscoreToCamelCase" value="true"/>
+    </bean>
+
     <bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="WEB-INF/mappers/*.xml"/>
+        <property name="typeAliasesPackage" value="org.innovibe.spring.model"/>
+        <property name="configuration" ref="mybatisConfiguration"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
 </beans>

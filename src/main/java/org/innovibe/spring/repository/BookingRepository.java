@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 @AllArgsConstructor
 @Repository
 public class BookingRepository {
+
     private JdbcTemplate jdbcTemplate;
 
     public boolean create(TableBooking tableBooking) {

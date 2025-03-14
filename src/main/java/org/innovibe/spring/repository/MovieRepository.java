@@ -1,7 +1,10 @@
 package org.innovibe.spring.repository;
 
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.innovibe.spring.model.Movie;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,34 +20,23 @@ import java.util.List;
 @Repository
 public class MovieRepository {
 
-    private JdbcTemplate jdbcTemplate;
+    private SqlSessionTemplate sqlSessionTemplate;
 
     public boolean create(Movie movie) {
-        boolean result = false;
-        /*
-            executeUpdate() 를 해야되는 작업 : insert,update, delete
-            는 template.update()
-            executQuery :
-         */
-
-        int r = jdbcTemplate.update("insert into movies(title,description, genre, release_date) values (?,?,?,?)",
-                movie.getTitle(),movie.getDescription(),movie.getGenre(),movie.getReleaseDate()
-        );
-
+        int r = sqlSessionTemplate.insert("movie.create", movie);
         return r > 0 ? true : false;
     }
 
     public List<Movie> findAll() {
-        String sql = "select * from movies";
+        /*
+        selectTag 를 사용할때는 selectOne 아니면 selectList 둘중에 하나를 사용한다고 생각하면 됨.
+         */
+        return sqlSessionTemplate.selectList("movie.findAll");
 
-        List<Movie> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Movie.class));
-
-        return list;
     }
+
     public Movie findById(int id) {
-        String sql = "select * from movies where id =?";
-        List<Movie> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Movie.class), id);
-
-        return list.isEmpty() ? null : list.get(0);
+        return sqlSessionTemplate.selectOne("movie.findById",id);
     }
+
 }

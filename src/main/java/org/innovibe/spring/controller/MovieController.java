@@ -19,7 +19,7 @@ public class MovieController {
 
     @RequestMapping("/form")
     public String movieFormHandle() {
-        return "/movie/form";
+        return "movie/form";
     }
 
     @RequestMapping("/create-proceed")
@@ -30,23 +30,11 @@ public class MovieController {
     }
 
     @RequestMapping("/list")
-    public String listHandle(Model model) {
+    public String listHandel(Model model) {
         List<Movie> movies = movieRepository.findAll();
+        model.addAttribute("movies",movies);
 
-        model.addAttribute("movies", movies);
         return "movie/list";
     }
 
-    @RequestMapping("/detail")
-    public String detailHandle(Model model, @RequestParam("id") int id) {
-
-        Movie one = movieRepository.findById(id);
-
-        if (one == null) {
-            return "redirect:/movie/list";
-        }
-
-        model.addAttribute("found", one);
-        return "movie/detail";
-    }
 }
