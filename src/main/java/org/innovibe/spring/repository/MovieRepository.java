@@ -27,6 +27,8 @@ public class MovieRepository {
 
             ps.executeUpdate();
             result = true;
+
+            conn.close();
         } catch (SQLException e) {
             System.out.println("MovieRepository.Create error");
         }

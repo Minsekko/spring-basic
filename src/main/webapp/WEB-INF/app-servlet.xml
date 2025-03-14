@@ -17,14 +17,20 @@
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
     <!-- register datasource -->
+    <!--
     <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://database.cnoaceyqgg2y.ap-northeast-2.rds.amazonaws.com:3306/playground"/>
         <property name="username" value="admin"/>
         <property name="password" value="1q2w3e4r"/>
     </bean>
-
+    -->
+    <bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://database.cnoaceyqgg2y.ap-northeast-2.rds.amazonaws.com:3306/playground"/>
+        <property name="username" value="admin"/>
+        <property name="password" value="1q2w3e4r"/>
+    </bean>
 
 </beans>
